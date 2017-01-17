@@ -77,7 +77,7 @@ int initFB(void)
 
   size_t size = scrinfo.yres_virtual;
 
-  if ((scrinfo.bits_per_pixel == 24)) {
+  if (scrinfo.bits_per_pixel == 24) {
     scrinfo.bits_per_pixel = 32;
     L("24-bit XRGB display detected\n");
   }
