@@ -76,6 +76,7 @@ void setIdle(int i);
 void close_app();
 screenFormat screenformat;
 
+#ifndef DVNC_STATIC_WRAPPER
 #ifdef NOAPP
 #define DVNC_FILES_PATH "/data/local/tmp"
 #define DVNC_LIB_PATH "/data/local/tmp"
@@ -85,6 +86,7 @@ screenFormat screenformat;
 #endif
 
 #define ARR_LEN(a) (sizeof(a)/sizeof(a)[0])
-static int compiled_sdks[] = {18};
+static int compiled_sdks[] = {18, PLATFORM_SDK_VERSION};
+#endif
 
 #endif

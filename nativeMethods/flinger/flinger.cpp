@@ -223,14 +223,14 @@ extern "C" int init_flinger()
         return -1;
 }
 
-extern "C" unsigned int *checkfb_flinger()
+extern "C" unsigned char *checkfb_flinger()
 {
     screenshotClient->update(display, Rect(), true);
     void const* base = screenshotClient->getPixels();
-    return (unsigned int*)base;
+    return (unsigned char*)base;
 }
 
-extern "C" unsigned int *readfb_flinger()
+extern "C" unsigned char *readfb_flinger()
 {
     screenshotClient->update(display, Rect(), true);
     void const* base = 0;
@@ -242,6 +242,7 @@ extern "C" unsigned int *readfb_flinger()
     s = screenshotClient->getStride();
 
     if (s > w) {
+        return NULL;
         // If stride is greater than width, then the image is non-contiguous in memory
         // so we have copy it into a new array such that it is
         void *new_base = malloc(w * h * Bpp);
@@ -253,9 +254,9 @@ extern "C" unsigned int *readfb_flinger()
             tmp_ptr = (void *)((char *)tmp_ptr + w * Bpp);
             base = (void *)((char *)base + s * Bpp);
         }
-        return (unsigned int *)new_base;
+        return (unsigned char *)new_base;
     }
-    return (unsigned int *)base;
+    return (unsigned char *)base;
 }
 
 extern "C" void close_flinger()
