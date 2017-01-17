@@ -32,11 +32,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "rfb/rfbregion.h"
 #include "suinput.h"
 
+#include <time.h>
 
 #define CONCAT2(a,b) a##b
 #define CONCAT2E(a,b) CONCAT2(a,b)
 #define CONCAT3(a,b,c) a##b##c
 #define CONCAT3E(a,b,c) CONCAT3(a,b,c)
+
+#define likely(x)       __builtin_expect((x),1)
+#define unlikely(x)     __builtin_expect((x),0)
 
 char VNC_PASSWORD[256] = "";
 char VNC_PASSWD_FILE[256] = "";

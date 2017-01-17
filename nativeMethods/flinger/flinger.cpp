@@ -20,6 +20,7 @@
 #include <fcntl.h>
 
 #include "flinger.h"
+#include "../common.h"
 #include "screenFormat.h"
 
 #include <binder/IPCThreadState.h>
