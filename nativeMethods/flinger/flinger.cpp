@@ -269,5 +269,5 @@ extern "C" unsigned char *readfb_flinger()
 extern "C" void close_flinger()
 {
     display = nullptr;
-    free(screenshotClient);
+    delete screenshotClient;
 }
