@@ -29,6 +29,7 @@ LOCAL_C_INCLUDES += \
 LOCAL_STATIC_LIBRARIES := libvncserver
 LOCAL_STATIC_LIBRARIES += libdvnc_flinger
 LOCAL_STATIC_LIBRARIES += libdvnc_gralloc
+LOCAL_MODULE_TAGS := optional
 
 LOCAL_MODULE := droidvncserver
 
