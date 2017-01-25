@@ -37,7 +37,7 @@ static uint32_t DEFAULT_DISPLAY_ID = ISurfaceComposer::eDisplayIdMain;
 static const int COMPONENT_YUV = 0xFF;
 int32_t displayId = DEFAULT_DISPLAY_ID;
 size_t Bpp = 32;
-sp<IBinder> display = SurfaceComposerClient::getBuiltInDisplay(displayId);
+sp<IBinder> display;
 ScreenshotClient *screenshotClient=NULL;
 
 struct PixelFormatInformation {
@@ -214,11 +214,17 @@ extern "C" int init_flinger()
 
     L("--Initializing JellyBean access method--\n");
 
+    display = SurfaceComposerClient::getBuiltInDisplay(displayId);
+    if (display == nullptr) {
+        L("Unable to get handle for display %d\n", displayId);
+        return -1;
+    }
+
     screenshotClient = new ScreenshotClient();
     L("ScreenFormat: %d\n", screenshotClient->getFormat());
     errcode = screenshotClient->update(display, Rect(), true);
     L("Screenshot client updated its display on init.\n");
-    if (display != NULL && errcode == NO_ERROR)
+    if (errcode == NO_ERROR)
         return 0;
     else
         return -1;
@@ -262,5 +268,6 @@ extern "C" unsigned char *readfb_flinger()
 
 extern "C" void close_flinger()
 {
+    display = nullptr;
     free(screenshotClient);
 }
