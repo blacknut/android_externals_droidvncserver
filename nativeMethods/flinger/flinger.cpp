@@ -222,7 +222,7 @@ extern "C" int init_flinger()
 
     screenshotClient = new ScreenshotClient();
     L("ScreenFormat: %d\n", screenshotClient->getFormat());
-    errcode = screenshotClient->update(display, Rect(), true);
+    errcode = screenshotClient->update(display, Rect(), false);
     L("Screenshot client updated its display on init.\n");
     if (errcode == NO_ERROR)
         return 0;
@@ -232,14 +232,14 @@ extern "C" int init_flinger()
 
 extern "C" unsigned char *checkfb_flinger()
 {
-    screenshotClient->update(display, Rect(), true);
+    screenshotClient->update(display, Rect(), false);
     void const* base = screenshotClient->getPixels();
     return (unsigned char*)base;
 }
 
 extern "C" unsigned char *readfb_flinger()
 {
-    screenshotClient->update(display, Rect(), true);
+    screenshotClient->update(display, Rect(), false);
     void const* base = 0;
     uint32_t w, h, s;
 
