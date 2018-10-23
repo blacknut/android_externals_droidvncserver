@@ -48,7 +48,7 @@ void FUNCTION(void)
 		b = (OUT_T*) readBufferGralloc();
 	else if (method==FLINGER)
 		b = (OUT_T*) readBufferFlinger();
-	L("readBuffer=%f\n", ((double) (clock() - start)) / CLOCKS_PER_SEC);
+	// L("readBuffer=%f\n", ((double) (clock() - start)) / CLOCKS_PER_SEC);
 
 	int max_x=-1,max_y=-1, min_x=99999, min_y=99999;
 	int h;
@@ -133,7 +133,7 @@ void FUNCTION(void)
 				if (method==FRAMEBUFFER)
 					pixelToVirtual = PIXEL_TO_VIRTUALPIXEL_FB(i,j);
 				else
-					pixelToVirtual = PIXEL_TO_VIRTUALPIXEL(i,j);			
+					pixelToVirtual = PIXEL_TO_VIRTUALPIXEL(i,j);
 
 				if (a[(vncscr->width - 1 - j + offset)] != b[pixelToVirtual])
 				{
@@ -141,7 +141,7 @@ void FUNCTION(void)
 
 					if (i>max_y)
 						max_y=i;
-						
+
 					if (i<min_y)
 						min_y=i;
 
@@ -169,10 +169,10 @@ void FUNCTION(void)
 
 				if (a[((vncscr->width - 1 - i) + offset )]!=b[pixelToVirtual]) {
 					a[((vncscr->width - 1 - i) + offset )]=b[pixelToVirtual];
-					
+
 					if (i>max_x)
 						max_x=i;
-						
+
 					if (i<min_x)
 						min_x=i;
 
@@ -180,7 +180,7 @@ void FUNCTION(void)
 
 					if (h < min_y)
 						min_y=vncscr->height-j;
-						
+
 					if (h > max_y)
 						max_y=vncscr->height-j;
 
@@ -204,13 +204,13 @@ void FUNCTION(void)
 
 					if (i>max_y)
 						max_y=i;
-						
+
 					if (i<min_y)
 						min_y=i;
 
 					if (j < min_x)
 						min_x=j;
-						
+
 					if (j > max_x)
 						max_x=j;
 
@@ -227,7 +227,7 @@ void FUNCTION(void)
 #ifndef DETECT_CHANGES
 		start = clock();
 		memcpy(vncbuf,b,screenformat.width*screenformat.height*screenformat.bitsPerPixel/CHAR_BIT);
-		L("memcmp=%f\n", ((double) (clock() - start)) / CLOCKS_PER_SEC);
+		// L("memcmp=%f\n", ((double) (clock() - start)) / CLOCKS_PER_SEC);
 		min_x = min_y = 0;
 		max_x = screenformat.width;
 		max_y = screenformat.height;
@@ -236,7 +236,7 @@ void FUNCTION(void)
 		max_y ++;
 #endif
 
-		L("Changed r%d x[%d, %d) y[%d, %d)\n", rotation, min_x, max_x, min_y, max_y);
+		// L("Changed r%d x[%d, %d) y[%d, %d)\n", rotation, min_x, max_x, min_y, max_y);
 
 		rfbMarkRectAsModified(vncscr, min_x, min_y, max_x, max_y);
 	}
