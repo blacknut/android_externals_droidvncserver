@@ -5,7 +5,7 @@ LOCAL_CFLAGS  +=  -Wall -Wno-unused-variable -Wno-maybe-uninitialized -Wno-unuse
 									-DDVNC_STATIC_WRAPPER
 
 LOCAL_SHARED_LIBRARIES := liblog libz
-LOCAL_SHARED_LIBRARIES += libgui libui libhardware libutils
+LOCAL_SHARED_LIBRARIES += libgui libui libhardware libutils libpng libjpeg libssl libcrypto
 
 LOCAL_SRC_FILES += \
 									 droidvncserver.c \

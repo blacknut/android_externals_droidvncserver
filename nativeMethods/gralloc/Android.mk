@@ -14,7 +14,7 @@ LOCAL_MODULE := libdvnc_gralloc_sdk$(PLATFORM_SDK_VERSION)
 #LOCAL_MODULE_PATH := $(LOCAL_PATH)/../libs/$(TARGET_CPU_ABI)
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SHARED_LIBRARIES := libhardware libcutils
+LOCAL_SHARED_LIBRARIES := libhardware libcutils liblog
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -32,6 +32,6 @@ LOCAL_MODULE := libdvnc_gralloc
 #LOCAL_MODULE_PATH := $(LOCAL_PATH)/../libs/$(TARGET_CPU_ABI)
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_SHARED_LIBRARIES := libhardware libcutils
+LOCAL_SHARED_LIBRARIES := libhardware libcutils liblog
 
 include $(BUILD_STATIC_LIBRARY)

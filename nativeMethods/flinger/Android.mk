@@ -23,7 +23,7 @@ LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils
 else ifeq ($(PLATFORM_SDK_VERSION), 15)
 LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils
 else
-LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils libutils
+LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils libutils liblog
 endif
 
 include $(BUILD_SHARED_LIBRARY)
@@ -51,7 +51,7 @@ LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils
 else ifeq ($(PLATFORM_SDK_VERSION), 15)
 LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils
 else
-LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils libutils
+LOCAL_SHARED_LIBRARIES := libgui libui libbinder libcutils libutils liblog
 endif
 
 include $(BUILD_STATIC_LIBRARY)
